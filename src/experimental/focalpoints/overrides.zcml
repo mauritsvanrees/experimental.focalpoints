@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <!-- Override the default from plone.namedfile.scaling. -->
+  <adapter
+      factory=".scaling.ExperimentalImageScalingFactory"
+      for="*"
+  />
+
+  <!-- Override the default from plone.app.tiles.imagescaling. -->
+  <browser:page
+    name="images"
+    for="plone.tiles.interfaces.IPersistentTile"
+    class=".tilescaling.TileImageScaling"
+    permission="zope2.View"
+    zcml:condition="installed plone.app.tiles"
+    />
+
+</configure>
