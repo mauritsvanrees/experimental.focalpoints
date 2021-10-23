@@ -8,6 +8,13 @@
 
   <browser:page
     for="*"
+    name="clear-scales"
+    class=".browser.ClearScales"
+    permission="cmf.ModifyPortalContent"
+  />
+
+  <browser:page
+    for="*"
     name="scalestest"
     template="scalestest.pt"
     permission="zope2.View"
