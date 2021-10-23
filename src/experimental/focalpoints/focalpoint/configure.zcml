@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Enable image transforming for all dexterity content. -->
+  <class class="plone.dexterity.content.DexterityContent">
+    <implements interface=".interfaces.IWantImageTransforming" />
+  </class>
+
+  <!-- <adapter factory=".transformer.SmartImageTransformer" /> -->
+  <!-- <subscriber handler=".subscriber.content_added"/> -->
+  <!-- <subscriber handler=".subscriber.content_modified"/> -->
+  <!-- When the datamanager factories are called, the subscribers are not needed.
+       But the datamanagers are only active when using z3c.form,
+       so not when you directly set an image field in for example an upgrade step.
+       Seems best to not use the subscribers for now.
+       Call the code yourself when you set such a field. -->
+  <adapter factory=".datamanager.AttributeImageField"/>
+  <adapter factory=".datamanager.DictionaryImageField"/>
+
+</configure>
