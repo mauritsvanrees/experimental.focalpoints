@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="experimental.focalpoints">
+
+  <browser:page
+    for="*"
+    name="scalestest"
+    template="scalestest.pt"
+    permission="zope2.View"
+  />
+
+</configure>

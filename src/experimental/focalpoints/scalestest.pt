@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<body>
+
+<metal:content-core fill-slot="content-core">
+<!-- We only take three images. -->
+<metal:main_macro define-macro="content-core" tal:define="images python:context.contentValues(filter={'portal_type': 'Image'})[:3]">
+  <metal:listingmacro define-macro="listing" tal:define="portal context/@@plone_portal_state/portal; image_scale portal/@@image_scale">
+
+  <h2>Original</h2>
+  <tal:images tal:repeat="image images">
+  <div class="row">
+    <div class="col">
+      <div>
+        <div tal:define="images_view image/@@images; scale python:images_view.tag('image')">
+          <img tal:replace="structure scale" />
+        </div>
+      </div>
+    </div>
+  </div>
+  </tal:images>
+
+  <div class="row">
+  <h2>Scale</h2>
+  <tal:images tal:repeat="image images">
+    <div class="col">
+      <div class="image-card">
+        <div tal:define="images_view image/@@images; scale python:images_view.tag('image', width=400, height=250, direction='scale')">
+          <img tal:replace="structure scale" />
+        </div>
+      </div>
+    </div>
+  </tal:images>
+  </div>
+
+  <div class="row">
+    <h2>Cover</h2>
+    <tal:images tal:repeat="image images">
+      <div class="col">
+        <div class="image-card">
+          <div tal:define="images_view image/@@images; scale python:images_view.tag('image', width=400, height=250, direction='cover')">
+            <img tal:replace="structure scale" />
+          </div>
+        </div>
+      </div>
+    </tal:images>
+  </div>
+
+  <div class="row">
+  <h2>Contain</h2>
+  <tal:images tal:repeat="image images">
+    <div class="col">
+      <div class="image-card">
+        <div tal:define="images_view image/@@images; scale python:images_view.tag('image', width=400, height=250, direction='contain')">
+          <img tal:replace="structure scale" />
+        </div>
+      </div>
+    </div>
+  </tal:images>
+  </div>
+
+<style>
+.image-card {
+  height: 254px;
+  width: 404px;
+  border: 2px solid black;
+}
+h2 {
+  padding-top: 2em;
+}
+</style>
+</metal:listingmacro>
+</metal:main_macro>
+</metal:content-core>
+
+</body>
+</html>
