@@ -19,6 +19,7 @@ setup(
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
     classifiers=[
+        "Development Status :: 2 - Pre-Alpha",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: Addon",
@@ -31,12 +32,12 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
-    keywords="Python Plone CMS",
+    keywords="image focal point autodetect",
     author="Maurits van Rees",
     author_email="m.van.rees@zestsoftware.nl",
-    url="https://github.com/collective/experimental.focalpoints",
+    url="https://github.com/mauritsvanrees/experimental.focalpoints",
     project_urls={
-        "PyPI": "https://pypi.python.org/pypi/experimental.focalpoints",
+        "PyPI": "https://pypi.org/project/experimental.focalpoints",
         "Source": "https://github.com/collective/experimental.focalpoints",
         "Tracker": "https://github.com/collective/experimental.focalpoints/issues",
         # 'Documentation': 'https://experimental.focalpoints.readthedocs.io/en/latest/',
@@ -50,10 +51,8 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "setuptools",
-        # -*- Extra requirements: -*-
-        "z3c.jbot",
-        "plone.api>=1.8.4",
-        "plone.app.dexterity",
+        "numpy",
+        "opencv-python-headless",
     ],
     extras_require={
         "test": [
